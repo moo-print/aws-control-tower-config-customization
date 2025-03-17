@@ -24,7 +24,7 @@ disable_rollback = false
 image_repositories = []
 EnableMockEndpoints=true
 parameter_overrides=[
-    "ExcludedAccounts=['590184129592', '057761489561', '132214682094', '257639898859', '271606309676']",
+    "ExcludedAccounts=['590184129592','057761489561','132214682094','257639898859','271606309676']",
     "ConfigRecorderExcludedResourceTypes=AWS::EC2::EC2Fleet",
 ]
 
