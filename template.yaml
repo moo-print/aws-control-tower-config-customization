@@ -61,6 +61,7 @@ Resources:
     ProducerLambda:
         Type: AWS::Lambda::Function
         DeletionPolicy: Retain
+        UpdateReplacePolicy: Retain
         DependsOn: CopyZips
         Properties:
             Code:
@@ -83,6 +84,7 @@ Resources:
     ProducerLambdaPermissions:                
       Type: AWS::Lambda::Permission
       DeletionPolicy: Retain
+      UpdateReplacePolicy: Retain
       Properties: 
         Action: 'lambda:InvokeFunction'
         FunctionName: !Ref ProducerLambda
@@ -92,6 +94,7 @@ Resources:
     ConsumerLambda:
         Type: AWS::Lambda::Function
         DeletionPolicy: Retain
+        UpdateReplacePolicy: Retain
         DependsOn: CopyZips
         Properties:
             Code:
@@ -115,6 +118,7 @@ Resources:
     ConsumerLambdaEventSourceMapping:
         Type: AWS::Lambda::EventSourceMapping
         DeletionPolicy: Retain
+        UpdateReplacePolicy: Retain
         Properties:
           BatchSize: 1
           Enabled: true
@@ -124,6 +128,7 @@ Resources:
     ProducerLambdaExecutionRole:
         Type: 'AWS::IAM::Role'
         DeletionPolicy: Retain
+        UpdateReplacePolicy: Retain
         Properties:
           ManagedPolicyArns:
             - !Sub 'arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
@@ -157,6 +162,7 @@ Resources:
     ConsumerLambdaExecutionRole:
         Type: 'AWS::IAM::Role'
         DeletionPolicy: Retain
+        UpdateReplacePolicy: Retain
         Properties:
           ManagedPolicyArns:
             - !Sub 'arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
@@ -190,6 +196,7 @@ Resources:
     SQSConfigRecorder:
         Type: AWS::SQS::Queue
         DeletionPolicy: Retain
+        UpdateReplacePolicy: Retain
         Properties:
             VisibilityTimeout: 180
             DelaySeconds: 5
