@@ -4,7 +4,7 @@ Parameters:
 
   ExcludedAccounts:
     Description: Excluded Accounts list. This list should contain Management account, Log Archive and Audit accounts at the minimum
-    Default: "['590184129592', '057761489561', '132214682094']"
+    Default: "['590184129592', '057761489561', '132214682094', '257639898859']"
     MaxLength: '2000'
     MinLength: '36'
     Type: String
