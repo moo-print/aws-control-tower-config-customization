@@ -30,7 +30,7 @@ jobs:
         run: |
           sam build
 
-      # - name: SAM Deploy
-      #   run: |
-      #     # Test SAM Deploy using configurations from samconfig.toml
-      #     sam deploy --no-execute-changeset
+      - name: SAM Deploy
+        run: |
+          # Test SAM Deploy using configurations from samconfig.toml
+          sam deploy --no-execute-changeset
