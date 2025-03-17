@@ -1,0 +1,36 @@
+name: AWS Control Tower - AWS Config Configuration
+on:
+  push:
+    branches:
+      - 'PLAT-5338-aws-control-tower-aws-config-configuration'
+
+permissions: 
+  id-token: write
+  issues: write
+  contents: read
+
+jobs:
+  deploy-aws-control-tower-aws-config-configuration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        id: creds
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: eu-west-1
+          role-to-assume: arn:aws:iam::025066252517:role/control-tower-config-test
+
+      - name: SAM Validate
+        run: |
+          sam validate
+
+      - name: SAM Build
+        run: |
+          sam build
+
+      # - name: SAM Deploy
+      #   run: |
+      #     # Test SAM Deploy using configurations from samconfig.toml
+      #     sam deploy --no-execute-changeset
